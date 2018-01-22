@@ -1265,7 +1265,9 @@ function! s:abbrev_filter(stash) abort "{{{
                         \   preedit.get_display_str(0)
                         \)
             call preedit.clear_all()
-            call preedit.push_filter_queue(char)
+            if char !=# "\<C-j>"
+                call preedit.push_filter_queue(char)
+            endif
 
             " Leave abbrev mode.
             call eskk#set_mode('hira')
